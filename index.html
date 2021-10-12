@@ -52,17 +52,21 @@
           <div class="error"></div>
         </div>
 
-        <!--   Password input -->
+        <!--   Jobtitle input -->
         <div>
-          <label for="password">Password</label>
-          <i class="fas fa-lock"></i>
+          <label for="job">Jobtitle</label>
+          <i class="fas fa-tools"></i>
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password here"
-          />
+          <select name="job" id="job">
+            <option disabled selected value></option>
+            <option value="ceo">CEO</option>
+            <option value="cfo">CFO</option>
+            <option value="cto">CTO</option>
+            <option value="webdev">Web developer</option>
+            <option value="webdesigner">Web designer</option>
+            <option value="engineer">Engineer</option>
+            <option value="sysadmin">System administrator</option>
+          </select>
 
           <i class="fas fa-exclamation-circle failure-icon"></i>
           <i class="far fa-check-circle success-icon"></i>

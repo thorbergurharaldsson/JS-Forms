@@ -4,7 +4,9 @@ let classes = (classes) => document.getElementsByClassName(classes);
 
 let username = id("username"),
   email = id("email"),
-  password = id("password"),
+  job = id("job"),
+  birthdate = id("date"),
+  phone = id("phone"),
   form = id("form"),
   errorMsg = classes("error"),
   successIcon = classes("success-icon"),
@@ -15,29 +17,30 @@ form.addEventListener("submit", (e) => {
 
   engine(username, 0, "Username cannot be blank");
   engine(email, 1, "Email cannot be blank");
-  engine(password, 2, "Password cannot be blank");
+  engine(job, 2, "Jobtitle cannot be blank");
   engine(date, 3, "Birthdate cannot be blank");
   engine(phone, 4, "Phone number cannot be blank");
 });
 
 let engine = (id, serial, message) => {
+  // If the field is empty
   if (id.value.trim() === "") {
-    errorMsg[serial].innerHTML = message;
+    errorMsg[serial].innerHTML = message; // Display error message
 
-    id.style.border = "2px solid red";
-
-    // icons
-    failureIcon[serial].style.opacity = "1";
-    successIcon[serial].style.opacity = "0";
-  } else {
-    errorMsg[serial].innerHTML = "";
-
-    id.style.border = "2px solid green";
+    id.style.border = "2px solid red"; // Make boarder red to indicate an unsuccessful validation
 
     // icons
-    failureIcon[serial].style.opacity = "0";
-    successIcon[serial].style.opacity = "1";
+    failureIcon[serial].style.opacity = "1"; // show failureIcon
+    successIcon[serial].style.opacity = "0"; // hide successIcon
+  }
+  //If the field is not empty
+  if (id.value.trim() != "") {
+    errorMsg[serial].innerHTML = ""; //Clear error message
 
-    document.location.href = "success.html";
+    id.style.border = "2px solid green"; // Make boarder green to indicate a successful validation
+
+    // icons
+    failureIcon[serial].style.opacity = "0"; // hide failureIcon
+    successIcon[serial].style.opacity = "1"; // show successIcon
   }
 };
